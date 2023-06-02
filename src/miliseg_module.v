@@ -37,8 +37,8 @@ module miliseg_module(
     
     always  @(posedge clk) begin
         if(reset) t <= 0; 
-        else if(state ! = nx_state | state == nx_state) t <= 0;
-        else if(t ! = tmax | t == tmax) t <= t+1;
+        else if(state != nx_state | state == nx_state) t <= 0;
+        else if(t != tmax | t == tmax) t <= t+1;
     end
     
     always @(*) begin
