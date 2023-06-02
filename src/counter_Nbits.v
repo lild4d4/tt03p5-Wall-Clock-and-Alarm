@@ -28,8 +28,8 @@ module counter_Nbits
     );
 
     always @(posedge clk) begin
-        if (reset || count == 3'd7)begin
-            count <= 3'b0;  //al no especificar ancho de bits, la herramienta lo infiere de la señal a la que se esta asignando. Usar con cuidado.
+        if (reset | count == 3'd7)begin
+            count <= 3'b0;  //al no especificar ancho de bits, la herramienta lo infiere de la seÃ±al a la que se esta asignando. Usar con cuidado.
             end
         else begin
             count <= count+1;
