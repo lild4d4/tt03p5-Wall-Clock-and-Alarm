@@ -48,7 +48,8 @@ module Reloj_top(
     
     
     wire Nreset;
-    assign Nreset = ~rst_n;
+	not n(Nreset, rst_n);
+    //assign Nreset = ~rst_n;
     
     reg [31:0] miliseg;
     reg [31:0] seg, min, hour;
