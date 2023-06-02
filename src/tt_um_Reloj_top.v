@@ -34,21 +34,21 @@ module Reloj_top(
     //output reg [6:0] segments,
     //output reg [7:0] anodes
 	
-	wire up 		= ui_in[0];
-	wire down		= ui_in[1];
-	wire center		= ui_in[2];
+    wire up 		= ui_in[0];
+    wire down		= ui_in[1];
+    wire center		= ui_in[2];
 	
-	reg [6:0] segments;
-	reg [7:0] anodes;
-	assign uio_out 			= {1'b1, segments};
-	assign uo_out 			= anodes; 
+    reg [6:0] segments;
+    reg [7:0] anodes;
+    assign uio_out 			= {1'b1, segments};
+    assign uo_out 			= anodes; 
 	
-	assign uio_en = 8'b1111_1111;
+    assign uio_en = 8'b1111_1111;
     
     
     
     wire Nreset;
-	not n(Nreset, rst_n);
+    not n(Nreset, rst_n);
     //assign Nreset = ~rst_n;
     
     reg [31:0] miliseg;
