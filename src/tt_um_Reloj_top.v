@@ -40,7 +40,7 @@ module Reloj_top(
 	
     reg [6:0] segments;
     reg [7:0] anodes;
-	assign uio_out [6:0] = {1'b1, segments};
+    assign uio_out [6:0] = segments;
     assign uo_out 			= anodes; 
 	
     assign uio_en = 8'b11111111;
