@@ -37,18 +37,15 @@ module tt_um_Reloj_top(
     wire up 		= ui_in[0];
     wire down		= ui_in[1];
     wire center		= ui_in[2];
-	
     reg [6:0] segments;
     reg [7:0] anodes;
-    assign uio_out [6:0] = segments;
-    assign uo_out = anodes; 
-	
-    assign uio_en = 8'b11111111;
+    assign uio_out 			= {1'b1, segments};
+    assign uo_out 			= anodes; 
+    assign uio_en = 8'b1111_1111;
     
     
     
     wire Nreset;
-    //not n(Nreset, rst_n);
     assign Nreset = ~rst_n;
     
     reg [31:0] miliseg;

@@ -26,8 +26,7 @@ module Actividad2_timed_FSM_v2(
     output reg [7:0] anodes
     );
     
-    wire Nreset;
-    //not n(Nreset, reset);
+    reg Nreset;
     assign Nreset = ~reset;
     
     reg [31:0] to_display;

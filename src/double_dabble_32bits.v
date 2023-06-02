@@ -24,13 +24,13 @@
  * unsigned_to_bcd.v
  * 2017/04/18 - Felipe Veas <felipe.veasv [at] usm.cl>
  *
- * Este m贸dulo es una implementaci贸n del algoritmo double dabble,
- * comienza a convertir un n煤mero en binario cuando recibe un pulso
- * en su entrada 'trigger'. La salida idle pasa a LOW si el m贸dulo se
- * encuentra realizando una conversi贸n.
+ * Este m骴ulo es una implementaci髇 del algoritmo double dabble,
+ * comienza a convertir un n鷐ero en binario cuando recibe un pulso
+ * en su entrada 'trigger'. La salida idle pasa a LOW si el m骴ulo se
+ * encuentra realizando una conversi髇.
  */
 
-// -- Plantilla de instanciaci贸n
+// -- Plantilla de instanciaci髇
 //	unsigned_to_bcd u32_to_bcd_inst (
 //		.clk(clk),
 //		.trigger(trigger),
@@ -42,15 +42,15 @@
 module unsigned_to_bcd
 (
 	input clk,            // Reloj
-	input trigger,        // Inicio de conversi贸n
-	input [31:0] in,      // N煤mero binario de entrada
-	output reg idle,      // Si vale 0, indica una conversi贸n en proceso
-	output reg [31:0] bcd // Resultado de la conversi贸n
+	input trigger,        // Inicio de conversi髇
+	input [31:0] in,      // N鷐ero binario de entrada
+	output reg idle,      // Si vale 0, indica una conversi髇 en proceso
+	output reg [31:0] bcd // Resultado de la conversi髇
 );
 
 	/*
-	 * Por "buenas pr谩cticas" parametrizamos las constantes num茅ricas de los estados
-	 * del m贸dulo y evitamos trabajar con n煤meros "m谩gicos" en el resto del c贸digo.
+	 * Por "buenas pr醕ticas" parametrizamos las constantes num閞icas de los estados
+	 * del m骴ulo y evitamos trabajar con n鷐eros "m醙icos" en el resto del c骴igo.
 	 *
 	 * https://en.wikipedia.org/wiki/Magic_number_(programming)
 	 * http://stackoverflow.com/questions/47882/what-is-a-magic-number-and-why-is-it-bad
@@ -70,7 +70,7 @@ module unsigned_to_bcd
 	always @(*) begin
 		/*
 		 * Por defecto, los estados futuros mantienen el estado actual. Esto nos
-		 * ayuda a no tener que ir definiendo cada uno de los valores de las se帽ales
+		 * ayuda a no tener que ir definiendo cada uno de los valores de las se馻les
 		 * en cada estado posible.
 		 */
 		state_next = state;
@@ -95,28 +95,28 @@ module unsigned_to_bcd
 			 * Sumamos 3 a cada columna de 4 bits si el valor de esta es
 			 * mayor o igual a 5
 			 */
-			if (shift[31:28] > 5 | shift[31:28] == 5)
+			if (shift[31:28] >= 5)
 				shift_next[31:28] = shift[31:28] + 4'd3;
 
-			if (shift[27:24] > 5 | shift[27:24] == 5)
+			if (shift[27:24] >= 5)
 				shift_next[27:24] = shift[27:24] + 4'd3;
 
-			if (shift[23:20] > 5 | shift[23:20] == 5)
+			if (shift[23:20] >= 5)
 				shift_next[23:20] = shift[23:20] + 4'd3;
 
-			if (shift[19:16] > 5 | shift[19:16] == 5)
+			if (shift[19:16] >= 5)
 				shift_next[19:16] = shift[19:16] + 4'd3;
 
-			if (shift[15:12] > 5 | shift[15:12] == 5)
+			if (shift[15:12] >= 5)
 				shift_next[15:12] = shift[15:12] + 4'd3;
 
-			if (shift[11:8] > 5 | shift[11:8] == 5)
+			if (shift[11:8] >= 5)
 				shift_next[11:8] = shift[11:8] + 4'd3;
 
-			if (shift[7:4] > 5 | shift[7:4] == 5)
+			if (shift[7:4] >= 5)
 				shift_next[7:4] = shift[7:4] + 4'd3;
 
-			if (shift[3:0] > 5 | shift[3:0] == 5)
+			if (shift[3:0] >= 5)
 				shift_next[3:0] = shift[3:0] + 4'd3;
 
 			state_next = S_SHIFT;
@@ -126,7 +126,7 @@ module unsigned_to_bcd
 			shift_next = {shift[30:0], in[COUNTER_MAX - counter_next]};
 
 			/*
-			 * Si el contador actual alcanza la cuenta m谩xima, actualizamos la salida y
+			 * Si el contador actual alcanza la cuenta m醲ima, actualizamos la salida y
 			 * terminamos el proceso.
 			 */
 			if (counter == COUNTER_MAX) begin
