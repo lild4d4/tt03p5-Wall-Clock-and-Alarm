@@ -5,14 +5,27 @@ project:
 
 # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
 # Source files must be in ./src and you must list each source file separately
-#  source_files:        
-#    - counter.v
-#    - decoder.v
-#  top_module:  "tt_um_example"      # Put the name of your top module here, must start with "tt_um_". Make it unique by prepending your github username
+  source_files:        
+    - Actividad2_timed_FSM_v2.v
+    - BCD_to_sevenseg.v
+    - clock_divider.v
+    - counter_Nbits.v
+    - double_dabble_32bits.v
+    - hour_module.v
+    - miliseg_module.v
+    - minmod.v
+    - NumToSeven.v
+    - PB_Debouncer_FSM.v
+    - seg_module.v
+    - separador.v
+    - TDM.v
+    - timed_FSM.v
+    - tt_um_Reloj_top.v
+  top_module:  "tt_um_Reloj_top"      # Put the name of your top module here, must start with "tt_um_". Make it unique by prepending your github username
 
 # How many tiles your design occupies? A single tile is about 167x108 uM.
 # Before changing this, please reach out to us on discord to discuss your design.
-  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 4x2 or 8x2
+  tiles: "4x2"    # Valid values: 1x1, 1x2, 2x2, 4x2 or 8x2
 
 # Keep a track of the submission yaml
 yaml_version: 3.5
@@ -37,9 +50,9 @@ documentation:
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
-    - none
-    - none
-    - none
+    - up
+    - down
+    - center
     - none
     - none
     - none
