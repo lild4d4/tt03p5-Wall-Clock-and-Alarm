@@ -27,7 +27,8 @@ module Actividad2_timed_FSM_v2(
     );
     
     wire Nreset;
-    assign Nreset = ~reset;
+    not n(Nreset, reset);
+    //assign Nreset = ~reset;
     
     reg [31:0] to_display;
     reg boton_pressed_status, boton_pressed_pulse, boton_released_pulse;
