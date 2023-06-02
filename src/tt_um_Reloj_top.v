@@ -25,7 +25,7 @@ module tt_um_Reloj_top(
     input wire [7:0] uio_in,
     output wire [7:0] uo_out,
     input wire [7:0] uio_out,
-    output wire [7:0] uio_en,
+    output wire [7:0] uio_oe,
     input wire ena, clk, rst_n
     );
     
@@ -41,7 +41,7 @@ module tt_um_Reloj_top(
     reg [7:0] anodes;
     assign uio_out 			= {1'b1, segments};
     assign uo_out 			= anodes; 
-    assign uio_en = 8'b1111_1111;
+    assign uio_oe = 8'b1111_1111;
     
     
     
